@@ -17,6 +17,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
+      #ルートパーツ作成
+      @part = @user.parts.build(title: '新規パーツ', content: 'none')
+      if @part.save
+        flash[:success] = '最初のパーツを作成しました'
+      else
+        flash .now[:danger] = 'パーツの作成に失敗しました'
+      end
+      #ここまで
       flash[:success] = 'ユーザを登録しました'
       redirect_to @user
     else

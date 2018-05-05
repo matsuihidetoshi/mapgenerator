@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505002351) do
+ActiveRecord::Schema.define(version: 20180505070202) do
+
+  create_table "parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_parts_on_user_id", using: :btree
+  end
+
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "part_id"
+    t.integer  "relate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["part_id", "relate_id"], name: "index_relationships_on_part_id_and_relate_id", unique: true, using: :btree
+    t.index ["part_id"], name: "index_relationships_on_part_id", using: :btree
+    t.index ["relate_id"], name: "index_relationships_on_relate_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -20,4 +39,7 @@ ActiveRecord::Schema.define(version: 20180505002351) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "parts", "users"
+  add_foreign_key "relationships", "parts"
+  add_foreign_key "relationships", "parts", column: "relate_id"
 end

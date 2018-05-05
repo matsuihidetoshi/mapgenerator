@@ -1,5 +1,23 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <div class="row">
+    <aside class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">ユーザ：<%= @user.name %></h3>
+        </div>
+      </div>
+    </aside>
+    <div class="col-xs-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">パーツ一覧</h3>
+        </div>
+      </div>
+      <ul class="nav nav-tabs nav-justified">
+        <li><%= render 'parts/parts', parts: @parts %></li>
+      </ul>
+    </div>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
