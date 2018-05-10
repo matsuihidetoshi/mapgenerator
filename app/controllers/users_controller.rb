@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show]
-
+  before_action :require_user_logged_in, only: [:show, :destroy]
+  
 #  def index
 #   @users = User.all.page(param[:page])
 #  end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     
     if @user.save
       #ルートパーツ作成
-      @part = @user.parts.build(title: '新規パーツ', content: 'none')
+      @part = @user.parts.build(title: 'default', content: 'none')
       if @part.save
         flash[:success] = '最初のパーツを作成しました'
       else
@@ -34,6 +34,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = 'ユーザを削除しました'
+    redirect_back(fallback_location: root_path)
   end
 end
 

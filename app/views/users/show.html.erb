@@ -16,6 +16,9 @@
           <p>名前：<%= @user.name %></p>
           <p>メールアドレス：<%= @user.email %></p>
         </div>
+        <div class="delete">
+          <%= link_to "削除", @user, method: :delete, data: { confirm: "ユーザを削除すると、マップ情報もすべて削除されます。本当に削除しますか？" }, class: 'btn btn-danger btn-xs' %>
+        </div>
       </div>
     </ul>
   </div>

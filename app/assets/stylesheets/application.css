@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ 
+.blank{
+  margin: 40px;
+}
+
+.return{
+  text-align: center;
+}
+
+.delete{
+  text-align: right;
+}

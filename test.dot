@@ -1,0 +1,9 @@
+digraph G {
+  son[shape="Mrecord",label="{son | son}"];
+  grandson1[shape="Mrecord",label="{grandson1 | grandson1}"];
+  granddoughter1[shape="Mrecord",label="{granddoughter1 | test}"];
+  grandson3[shape="Mrecord",label="{grandson3 | test}"];
+  son -> grandson1;
+  son -> granddoughter1;
+  son -> grandson3;
+}

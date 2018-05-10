@@ -8,7 +8,7 @@ class Part < ApplicationRecord
   has_many :relationships, dependent: :destroy
   has_many :relatings, through: :relationships, source: :relate
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'relate_id', dependent: :destroy
-  has_many :related, through: :reverses_of_relationship, source: :part
+  has_many :relateds, through: :reverses_of_relationship, source: :part
   
   def relate(other_part)
     unless self == other_part
