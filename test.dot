@@ -1,9 +1,19 @@
 digraph G {
+  you[shape="Mrecord",label="{you | you}"];
   son[shape="Mrecord",label="{son | son}"];
   grandson1[shape="Mrecord",label="{grandson1 | grandson1}"];
   granddoughter1[shape="Mrecord",label="{granddoughter1 | test}"];
   grandson3[shape="Mrecord",label="{grandson3 | test}"];
+  doughter[shape="Mrecord",label="{doughter | doughter}"];
+  grandson4[shape="Mrecord",label="{grandson4 | test}"];
+  granddoughter3[shape="Mrecord",label="{granddoughter3 | test}"];
+  son2[shape="Mrecord",label="{son2 | test}"];
+  you -> son;
   son -> grandson1;
   son -> granddoughter1;
   son -> grandson3;
+  you -> doughter;
+  doughter -> grandson4;
+  doughter -> granddoughter3;
+  you -> son2;
 }

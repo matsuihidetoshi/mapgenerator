@@ -73,7 +73,7 @@ class PartsController < ApplicationController
     
     gv.save("test",:png)
     
-    FileUtils.mv("test.png", "app/assets/images/test.png")
+    FileUtils.mv("test.png", "public/test.png")
   end
 
   #パーツ新規作成ページ
