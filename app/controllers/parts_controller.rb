@@ -38,7 +38,7 @@ class PartsController < ApplicationController
   end
   
   def print
-    @part = @@prepart
+    @part = current_user.parts.find_by(id: params[:id])
     gv=Gviz.new
     
     def mapping(own, map)
