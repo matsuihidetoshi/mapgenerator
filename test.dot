@@ -1,7 +1,0 @@
-digraph G {
-  default[shape="Mrecord",label="{#{own.title} | #{own.content}}"];
-  test[shape="Mrecord",label="{test | test}"];
-  xxx[shape="Mrecord",label="{xxx | xxx}"];
-  default -> test;
-  test -> xxx;
-}

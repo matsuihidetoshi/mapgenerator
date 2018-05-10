@@ -70,10 +70,12 @@ class PartsController < ApplicationController
     end
     
     mapping(@part,gv)
+
+    filename = 'test' + @part.id.to_s
     
-    gv.save("test",:png)
+    gv.save(filename, :png)
     
-    FileUtils.mv("test.png", "public/images/test.png")
+    FileUtils.mv(filename + '.png', 'public/images/test' + @part.id.to_s + '.png')
   end
 
   #パーツ新規作成ページ
