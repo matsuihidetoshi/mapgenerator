@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   
   resources :relationships, only:[:create, :destroy]
   
-  get 'print', to: 'parts#print'
+  get '/print/:id', to: 'parts#print', as: 'print'
 end

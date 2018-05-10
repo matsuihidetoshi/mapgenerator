@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :edit]
+  before_action :correct_user, only: [:destroy, :edit, :print]
   require "fileutils"
   
   #パーツ作成アクション
@@ -73,7 +73,7 @@ class PartsController < ApplicationController
     
     gv.save("test",:png)
     
-    FileUtils.mv("test.png", "app/assets/images/test.png")
+    FileUtils.mv("test.png", "public/test.png")
   end
 
   #パーツ新規作成ページ
