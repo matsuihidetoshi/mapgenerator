@@ -49,8 +49,10 @@ class PartsController < ApplicationController
             #紐づけ
             route :"#{own.title}" => "#{child.title}"
             #内容を追加する
-            node :"#{own.title}", shape:'Mrecord', label:'{#{own.title} | #{own.content}}'
-            node :"#{child.title}", shape:'Mrecord', label:'{#{child.title} | #{child.content}}'
+            node :"#{own.title}", shape:'Mrecord', label:"{#{own.title} | #{own.content}}"
+            Rails.logger.info('自分→子、内容前')
+            node :"#{child.title}", shape:'Mrecord', label:"{#{child.title} | #{child.content}}"
+            Rails.logger.info('自分→子、内容後')
             
           end
           mapping(child,map)
@@ -63,7 +65,9 @@ class PartsController < ApplicationController
             route :"#{parent.title}" => "#{own.title}"
             
             node :"#{parent.title}", shape:'Mrecord', label:"{#{parent.title} | #{parent.content}}"
+            Rails.logger.info('親→自分、内容前')
             node :"#{own.title}", shape:'Mrecord', label:"{#{own.title} | #{own.content}}"
+            Rails.logger.info('親→自分、内容後')
             
         end
       end
@@ -73,9 +77,9 @@ class PartsController < ApplicationController
 
     filename = 'test' + @part.id.to_s
     
-    gv.save(filename, :png)
+    gv.save('public/images/' + filename, :png)
     
-    FileUtils.mv(filename + '.png', 'public/images/test' + @part.id.to_s + '.png')
+    Cloudinary::Uploader.upload('public/images/' + filename + '.png', :public_id => 'test_remote')
   end
 
   #パーツ新規作成ページ
