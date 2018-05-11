@@ -77,9 +77,9 @@ class PartsController < ApplicationController
 
     filename = 'test' + @part.id.to_s
     
-    gv.save('public/' + filename, :png)
+    gv.save('public/images/' + filename, :png)
     
-    Cloudinary::Uploader.upload('public/' + filename + '.png', :public_id => 'test_remote')
+    Cloudinary::Uploader.upload('public/images/' + filename + '.png', :public_id => 'test_remote')
   end
 
   #パーツ新規作成ページ
