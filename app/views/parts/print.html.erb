@@ -1,5 +1,5 @@
 <h1><%= @part.title %>からのマップ</h1>
-<div><%= cl_image_tag("test_remote.png") %></div>
+<div><%= image_tag("http://res.cloudinary.com/hxwdzwkhn/image/upload/test_remote.jpg") %></div>
 
 <div class="blank"></div>
 <p class ="return"><%= link_to '戻る', edit_part_path(@part), class: 'btn btn-info btn-xs' %></p>
