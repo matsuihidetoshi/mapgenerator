@@ -19,4 +19,4 @@
 public/images/
 test*.png
 test*.dot
-cloudinary.yml
+config/cloudinary.yml

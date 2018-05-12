@@ -17,3 +17,4 @@ test:
   api_secret: e9lQ2DkvauQHdG065byfWeUp7QQ
   enhance_image_tag: true
   static_image_support: false
+
