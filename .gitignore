@@ -21,3 +21,5 @@ test*.png
 test*.dot
 
 cloudinary.yml
+
+public/
