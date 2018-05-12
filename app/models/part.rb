@@ -2,8 +2,8 @@ class Part < ApplicationRecord
   belongs_to :user
   
   validates :user_id, presence: true
-  validates :title, presence: true, length: { maximum: 100 }
-  validates :content, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, format: { with: /\A[a-z0-9]+\z/i }, length: { maximum: 100 }
+  validates :content, presence: true, format: { with: /\A[a-z0-9]+\z/i },  length: { maximum: 255 }
   
   has_many :relationships, dependent: :destroy
   has_many :relatings, through: :relationships, source: :relate

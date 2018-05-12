@@ -31,9 +31,10 @@ class PartsController < ApplicationController
     
     if @part.update(part_params)
       flash[:success] = 'パーツは正常に更新されました'
-      redirect_to '/'
+      redirect_to root_path
     else
       flash.now[:danger] = 'パーツは更新されませんでした'
+      render :edit
     end
   end
   
