@@ -15,7 +15,7 @@ class PartsController < ApplicationController
     else
       @parts = current_user.parts.order('created_at DESC').page(params[:page])
       flash .now[:danger] = 'パーツの作成に失敗しました'
-      render 'toppages/index'
+      render :new
     end
   end
   
