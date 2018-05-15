@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       end
       #ここまで
       flash[:success] = 'ユーザを登録しました'
-      redirect_to @user
+      redirect_to root_path
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました'
       render :new
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:success] = 'ユーザを削除しました'
-    redirect_back(fallback_location: root_path)
+    redirect_to root_path
   end
 end
 

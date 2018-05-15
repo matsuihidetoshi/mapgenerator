@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PartsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :edit, :print]
@@ -45,27 +46,19 @@ class PartsController < ApplicationController
     def mapping(own, map)
       if own.relatings.exists?
         own.relatings.each do |child|
-          #map.route(own.title+own.content => child.title+child.content)
           map.graph do
-            #紐づけ
-            route :"#{own.title}" => "#{child.title}"
-            #内容を追加する
-            node :"#{own.title}", shape:'Mrecord', label:"{#{own.title} | #{own.content}}"
-            node :"#{child.title}", shape:'Mrecord', label:"{#{child.title} | #{child.content}}"
-            
+            route own.id => child.id
+            node :"#{own.id}", shape:'Mrecord', label:  "{#{own.title} | #{own.content}}"
+            node :"#{child.id}", shape:'Mrecord', label: "{#{child.title} | #{child.content}}"
           end
           mapping(child,map)
         end
       else
         parent = own.relateds.first
-        #map.route(parent.title+parent.content => own.title+own.content)
         map.graph do
-            
-            route :"#{parent.title}" => "#{own.title}"
-            
-            node :"#{parent.title}", shape:'Mrecord', label:"{#{parent.title} | #{parent.content}}"
-            node :"#{own.title}", shape:'Mrecord', label:"{#{own.title} | #{own.content}}"
-            
+            route parent.id => own.id
+            node :"#{parent.id}", shape:'Mrecord', label: "{#{parent.title} | #{parent.content}}"
+            node :"#{own.id}", shape:'Mrecord', label: "{#{own.title} | #{own.content}}"
         end
       end
     end
