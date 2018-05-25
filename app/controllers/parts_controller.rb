@@ -74,7 +74,10 @@ class PartsController < ApplicationController
     
     img = Cloudinary::Uploader.upload('public/' + filename + '.png', :public_id => 'test_remote')
     @ver = img["version"]
-    Rails.logger.info("バージョン#{@ver}")
+    
+    File.delete('public/' + filename + '.png')
+    File.delete('public/' + filename + '.dot')
+    
   end
 
   #パーツ新規作成ページ

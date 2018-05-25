@@ -63,3 +63,5 @@ end
 
 gem 'carrierwave'
 gem 'cloudinary'
+
+gem 'rails-i18n'
