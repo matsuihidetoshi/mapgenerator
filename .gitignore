@@ -20,6 +20,9 @@ public/images/
 test*.png
 test*.dot
 
+spec/models/mock_ups
+
+
 cloudinary.yml
 
 public/
