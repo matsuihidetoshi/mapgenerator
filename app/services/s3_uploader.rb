@@ -12,7 +12,7 @@ class S3Uploader < ApplicationService
     @bucket = s3.bucket(@bucket_name)
   end
 
-  def send(s3_path,file_path,file_name)
+  def upload(s3_path,file_path,file_name)
     begin
       o = @bucket.object(s3_path + '/' + file_name)
       o.upload_file(file_path + '/' + file_name)

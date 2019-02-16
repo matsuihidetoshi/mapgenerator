@@ -68,14 +68,20 @@ class PartsController < ApplicationController
 
     mapping(@part,gv)
 
-    filename = 'test' + @part.id.to_s
+    time_stamp = Time.now.to_i.to_s
 
-    gv.save('public/' + filename, :png)
+    file_name = 'map' + @part.id.to_s + time_stamp
 
-    @img = '/' + filename + '.png'
+    gv.save('tmp/files/' + file_name, :pdf)
 
-    #File.delete('public/' + filename + '.png')
-    #File.delete('public/' + filename + '.dot')
+    uploader = S3Uploader.new
+    uploader.upload('maps', 'tmp/files', file_name + '.pdf')
+
+    downloader = S3Downloader.new
+    @img = downloader.download('maps', file_name + '.pdf')
+
+    File.delete('tmp/files/' + file_name + '.pdf')
+    File.delete('tmp/files/' + file_name + '.dot')
 
   end
 
