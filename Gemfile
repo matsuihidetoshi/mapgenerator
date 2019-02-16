@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'aws-sdk-s3'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -60,8 +62,5 @@ group :production do
   #gem 'pg', '0.21.0'
   gem 'rails_12factor'
 end
-
-gem 'carrierwave'
-gem 'cloudinary'
 
 gem 'rails-i18n'
