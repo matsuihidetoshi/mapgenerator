@@ -4,7 +4,7 @@ class S3Uploader < ApplicationService
     @bucket_name = 'mapgenerator'
 
     Aws.config.update({
-        region: 'ap-northeast-1',
+        region: ENV['S3_REGION'],
         credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY'], ENV['AWS_SECRET_KEY'])
     })
 
