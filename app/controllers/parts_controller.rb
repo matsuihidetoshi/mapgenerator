@@ -3,7 +3,7 @@ class PartsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :edit, :print]
   require "fileutils"
-  
+
   #パーツ作成アクション
   def create
     @relatepart = @@prepart
@@ -19,17 +19,17 @@ class PartsController < ApplicationController
       render :new
     end
   end
-  
+
   #パーツ編集ページ
   def edit
     @part = current_user.parts.find_by(id: params[:id])
     @@prepart = @part
   end
-  
+
   #パーツ編集アクション
   def update
     @part = current_user.parts.find_by(id: params[:id])
-    
+
     if @part.update(part_params)
       flash[:success] = 'パーツは正常に更新されました'
       redirect_to root_path
@@ -38,12 +38,12 @@ class PartsController < ApplicationController
       render :edit
     end
   end
-  
+
   def print
     @part = current_user.parts.find_by(id: params[:id])
     gv=Gviz.new
-    
-    
+
+
     def mapping(own, map)
       if own.relatings.exists?
         own.relatings.each do |child|
@@ -65,19 +65,18 @@ class PartsController < ApplicationController
         end
       end
     end
-    
+
     mapping(@part,gv)
 
     filename = 'test' + @part.id.to_s
-    
+
     gv.save('public/' + filename, :png)
-    
-    img = Cloudinary::Uploader.upload('public/' + filename + '.png', :public_id => 'test_remote')
-    @ver = img["version"]
-    
-    File.delete('public/' + filename + '.png')
-    File.delete('public/' + filename + '.dot')
-    
+
+    @img = '/' + filename + '.png'
+
+    #File.delete('public/' + filename + '.png')
+    #File.delete('public/' + filename + '.dot')
+
   end
 
   #パーツ新規作成ページ
@@ -92,18 +91,18 @@ class PartsController < ApplicationController
     flash[:success] = 'パーツを削除しました'
     redirect_back(fallback_location: root_path)
   end
-  
+
   private
 
   def part_params
     params.require(:part).permit(:title, :content)
   end
-  
+
   def correct_user
     @part = current_user.parts.find_by(id: params[:id])
     unless @part
       redirect_to root_url
     end
   end
-  
+
 end

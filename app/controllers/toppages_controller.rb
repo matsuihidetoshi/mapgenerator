@@ -3,7 +3,7 @@ class ToppagesController < ApplicationController
     if logged_in?
       @user = current_user
       @part = current_user.parts.build
-      @parts = current_user.parts.order('created_at DESC').page(params[:page])
+      @parts = current_user.parts.order('created_at ASC').page(params[:page])
     end
 
     # Graph do

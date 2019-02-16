@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 .blank{
   margin: 40px;
 }
@@ -24,4 +24,8 @@
 
 .delete{
   text-align: right;
+}
+
+#application-container {
+  margin-top: 70px;
 }
