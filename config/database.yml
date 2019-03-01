@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: mapgenerator_production
-  username: hptemplate
+  username: root
   password: hidetoshi0424
