@@ -61,9 +61,10 @@ gem 'kaminari'
 
 gem 'gviz'
 
-group :production do
+group :production, :staging do
   #gem 'pg', '0.21.0'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 
 gem 'rails-i18n'
