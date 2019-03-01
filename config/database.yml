@@ -48,9 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  <<: *default
   database: mapgenerator_production
-  username: mapgenerator
-  password: <%= ENV['MAPGENERATOR_DATABASE_PASSWORD'] %>
+  username: hptemplate
+  password: hidetoshi0424
