@@ -17,7 +17,7 @@
                 <% if current_user.parts.count > 1 %>
                   <%= link_to "Delete", part, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
                 <% end %>
-                <%= link_to "Delete", edit_part_path(part), class: 'btn btn-primary btn-xs' %>
+                <%= link_to "Edit", edit_part_path(part), class: 'btn btn-primary btn-xs' %>
               <% end %>
             </div>
           </div>
