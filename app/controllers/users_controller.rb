@@ -13,18 +13,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      #ルートパーツ作成
       @part = @user.parts.build(title: 'default', content: 'none')
       if @part.save
-        flash[:success] = '最初のパーツを作成しました'
+        flash[:success] = 'Created the first part'
       else
-        flash .now[:danger] = 'パーツの作成に失敗しました'
+        flash .now[:danger] = 'Failed to create the first part'
       end
-      #ここまで
-      flash[:success] = 'ユーザを登録しました'
+      flash[:success] = 'Signed Up'
+      session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash.now[:danger] = 'ユーザの登録に失敗しました'
+      flash.now[:danger] = 'SignUp Failed'
       render :new
     end
   end
@@ -32,14 +31,13 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = 'ユーザを削除しました'
+    flash[:success] = 'Deleted User'
     redirect_to root_path
   end
 end
 
 private
 
-#Strong Parameter
 def user_params
   params.require(:user).permit(:name, :email, :password, :password_confirmation)
 end

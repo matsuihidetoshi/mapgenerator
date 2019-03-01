@@ -1,4 +1,4 @@
-<h1><%= @relatepart.title %>に新規パーツを追加</h1>
+<h1>Add a new part to<%= @relatepart.title %></h1>
 
 <div class="row">
   <div class="col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
@@ -8,19 +8,19 @@
       
       <%= render 'layouts/error_messages', model: f.object %>
       
-      <div class="form-group" >
-        <%= f.label :title, 'タイトル' %>
+      <div class="form-group">
+        <%= f.label :title, 'Title' %>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
   
-      <div class="form-group" >
-        <%= f.label :content, '内容' %>
+      <div class="form-group">
+        <%= f.label :content, 'Content' %>
         <%= f.text_field :content, class: 'form-control' %>
       </div>
   
-      <%= f.submit '作成', class: 'btn btn-danger btn-xs' %>
+      <%= f.submit 'Create', class: 'btn btn-danger btn-xs' %>
       
-      <%= link_to '戻る', edit_part_path(@relatepart), class: 'btn btn-info btn-xs' %>
+      <%= link_to 'Return', edit_part_path(@relatepart), class: 'btn btn-info btn-xs' %>
     
     <% end %>
   </div>

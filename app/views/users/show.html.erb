@@ -10,14 +10,14 @@
     <ul class="nav nav-tabs nav-justified">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">ユーザ詳細</h3>
+          <h3 class="panel-title">User Information</h3>
         </div>
         <div class="panel-body">
-          <p>名前：<%= @user.name %></p>
-          <p>メールアドレス：<%= @user.email %></p>
+          <p>Name：<%= @user.name %></p>
+          <p>Email：<%= @user.email %></p>
         </div>
         <div class="delete">
-          <%= link_to "削除", @user, method: :delete, data: { confirm: "ユーザを削除すると、マップ情報もすべて削除されます。本当に削除しますか？" }, class: 'btn btn-danger btn-xs' %>
+          <%= link_to "Delete", @user, method: :delete, data: { confirm: "If you delete the user, all parts related to the user will be removed. Are you sure?" }, class: 'btn btn-danger btn-xs' %>
         </div>
       </div>
     </ul>

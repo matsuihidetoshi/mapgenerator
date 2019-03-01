@@ -4,37 +4,34 @@ class PartsController < ApplicationController
   before_action :correct_user, only: [:destroy, :edit, :print]
   require "fileutils"
 
-  #パーツ作成アクション
   def create
     @relatepart = @@prepart
     @part = current_user.parts.build(part_params)
     if @part.save
-      flash[:success] = 'パーツを作成しました'
+      flash[:success] = 'Created a part'
       @relatepart.relate(@part)
       @relatepart.save
       redirect_to root_url
     else
       @parts = current_user.parts.order('created_at DESC').page(params[:page])
-      flash .now[:danger] = 'パーツの作成に失敗しました'
+      flash .now[:danger] = 'Failed to create a part'
       render :new
     end
   end
 
-  #パーツ編集ページ
   def edit
     @part = current_user.parts.find_by(id: params[:id])
     @@prepart = @part
   end
 
-  #パーツ編集アクション
   def update
     @part = current_user.parts.find_by(id: params[:id])
 
     if @part.update(part_params)
-      flash[:success] = 'パーツは正常に更新されました'
+      flash[:success] = 'Updated the part'
       redirect_to root_path
     else
-      flash.now[:danger] = 'パーツは更新されませんでした'
+      flash.now[:danger] = 'Failed to update the part'
       render :edit
     end
   end
@@ -85,13 +82,11 @@ class PartsController < ApplicationController
 
   end
 
-  #パーツ新規作成ページ
   def new
     @part = Part.new
     @relatepart = @@prepart
   end
 
-  #パーツ削除
   def destroy
     @part.destroy
     flash[:success] = 'パーツを削除しました'
