@@ -14,18 +14,3 @@
  *= require_self
  */
 
-.blank{
-  margin: 40px;
-}
-
-.return{
-  text-align: center;
-}
-
-.delete{
-  text-align: right;
-}
-
-#application-container {
-  margin-top: 70px;
-}

@@ -1,5 +1,44 @@
+.blank{
+    margin: 40px;
+}
 
-.navbar-default {
-    background-color: #58FAD0;
-    border-color: #58FAD0;
+.return{
+    text-align: right;
+    margin: 10px;
+}
+
+.delete{
+    text-align: right;
+    margin: 10px;
+}
+
+#application-container {
+    margin-top: 70px;
+}
+  
+
+.navbar-inverse {
+    background-color: #aac9dd;
+    border-color: #aac9dd;
+}
+
+.navbar-inverse .navbar-toggle:focus,
+.navbar-inverse .navbar-toggle:hover {
+    background-color: #99a9bb;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #ffffff;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+}
+
+#bs-example-navbar-collapse-1 {
+    border-color: #99a9bb;
+}
+
+#bs-example-navbar-collapse-1 ul li a {
+    color: #ffffff;
 }

@@ -3,7 +3,7 @@
     <aside class="col-xs-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">User：<%= @user.name %></h3>
+          <h3 class="panel-title">User：<%= link_to @user.name.truncate(12), @user %></h3>
         </div>
       </div>
     </aside>
