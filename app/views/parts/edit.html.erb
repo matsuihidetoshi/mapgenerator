@@ -17,7 +17,7 @@
       </div>
 
       <%= f.submit 'Update', class: 'btn btn-danger btn-xs' %>
-      <%= link_to "Add a new part to this part", new_part_path, class: 'btn btn-warning btn-xs' %>
+      <%= link_to "Add a new part to this part", new_part_path(id: @part.id), class: 'btn btn-warning btn-xs' %>
       <% if (@part.relatings.exists?) %>
         <%= link_to "Print the map from this part", print_path(@part), class: 'btn btn-warning btn-xs' %>
       <% end %>
