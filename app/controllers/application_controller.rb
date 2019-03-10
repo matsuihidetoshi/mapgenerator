@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def correct_user
-    @part = current_user.parts.find(params[:id])
-    unless @part
+    part = current_user.parts.find(params[:id])
+    unless part
       redirect_to root_url
     end
   end
