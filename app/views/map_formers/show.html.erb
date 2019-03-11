@@ -4,8 +4,8 @@
 <div class="blank"></div>
 <p class ="return">
 	<% if @edit %>
-		<%= link_to 'Return', edit_part_path(@part), class: 'btn btn-warning btn-block' %>
+		<%= link_to 'Back', edit_part_path(@part), class: 'btn btn-warning btn-block' %>
 	<% else%>
-		<%= link_to 'Return', root_path, class: 'btn btn-warning btn-block' %>
+		<%= link_to 'Back', root_path, class: 'btn btn-warning btn-block' %>
 	<% end %>
 </p>
