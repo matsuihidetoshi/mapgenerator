@@ -4,5 +4,8 @@ class MapFormersController < ApplicationController
     @part = Part.find(params[:id])
     @former = MapFormer.new
     @former.form(@part)
+    if params[:edit].present?
+      @edit = true
+    end
   end
 end

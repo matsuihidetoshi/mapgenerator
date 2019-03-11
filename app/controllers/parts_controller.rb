@@ -6,6 +6,9 @@ class PartsController < ApplicationController
   def new
     @parent = Part.find(params[:id])
     @part = Part.new
+    if params[:edit].present?
+      @edit = true
+    end
   end
 
   def create

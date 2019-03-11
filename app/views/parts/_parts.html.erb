@@ -14,10 +14,12 @@
             </div>
             <div>
               <% if current_user == part.user %>
+                <%= link_to "Print", map_former_path(part), class: 'btn btn-primary btn-xs' %>
+                <%= link_to "Add", new_part_path(id: part.id), class: 'btn btn-info btn-xs' %>
+                <%= link_to "Edit", edit_part_path(part), class: 'btn btn-success btn-xs' %>
                 <% if current_user.parts.count > 1 %>
                   <%= link_to "Delete", part, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
                 <% end %>
-                <%= link_to "Edit", edit_part_path(part), class: 'btn btn-primary btn-xs' %>
               <% end %>
             </div>
           </div>
