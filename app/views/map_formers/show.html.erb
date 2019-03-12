@@ -9,6 +9,13 @@
 	<% end %>
 </div>
 <div class="form-group map-form-section">
+	<%= form_tag(edit_part_path, method: :get) do %>
+		<%= hidden_field_tag :map_id, @part.id %>
+		<%= select_tag(:edit_id, options_for_select(@part.family_to_options), class: "form-control map-select map-form-group") %>
+		<%= submit_tag("Edit", class: "btn btn-success map-form-group map-submit") %>
+	<% end %>
+</div>
+<div class="form-group map-form-section">
 	<%= form_tag(part_path, method: :delete) do %>
 		<%= hidden_field_tag :map_id, @part.id %>
 		<%= select_tag(:delete_id, options_for_select(@part.family_to_options(false)), class: "form-control map-select map-form-group") %>
