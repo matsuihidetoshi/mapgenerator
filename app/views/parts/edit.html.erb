@@ -21,7 +21,7 @@
         <%= link_to "Print the map from this part", map_former_path(@part, edit: true), class: 'btn btn-primary btn-block' %>
       <% end %>
       <%= link_to "Add a new part to this part", new_part_path(id: @part.id, edit: true), class: 'btn btn-info btn-block' %>
-      <%= link_to "Back", root_path, class: 'btn btn-warning btn-block' %>
+      <div data-turbolinks="false"><%= link_to "Back", root_path, class: 'btn btn-warning btn-block return' %></div>
     <% end %>
   </div>
 </div>

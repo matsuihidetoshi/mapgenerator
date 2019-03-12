@@ -7,7 +7,9 @@ class PartsController < ApplicationController
     @parent = Part.find(params[:id])
     @part = Part.new
     if params[:edit].present?
-      @edit = true
+      @back_to = 'edit'
+    elsif params[:map_id].present?
+      @back_to = Part.find(params[:map_id])
     end
   end
 
@@ -18,7 +20,11 @@ class PartsController < ApplicationController
       flash[:success] = 'Created a part'
       @parent.relate(@part)
       @parent.save
-      redirect_to root_url
+      if params[:part][:map_id]
+        redirect_to map_former_path(Part.find(params[:part][:map_id]))
+      else
+        redirect_to root_path
+      end
     else
       @parts = current_user.parts.order('created_at DESC').page(params[:page])
       flash .now[:danger] = 'Failed to create a part'
@@ -43,10 +49,18 @@ class PartsController < ApplicationController
   end
 
   def destroy
-    @part = Part.find(params[:id])
+    if params[:map_id].present?
+      @part = Part.find(params[:delete_id])
+    else
+      @part = Part.find(params[:id])
+    end
     @part.destroy
     flash[:success] = 'Removed the part'
-    redirect_back(fallback_location: root_path)
+    if params[:map_id].present? && (part = Part.find(params[:map_id])).relatings.any?
+      redirect_to map_former_path(part)
+    else
+      redirect_to root_path
+    end
   end
 
   private

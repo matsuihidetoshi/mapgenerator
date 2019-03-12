@@ -3,8 +3,7 @@
 }
 
 .return{
-    text-align: right;
-    margin: 10px;
+    margin: 5px 0px 5px 0px;
 }
 
 .delete{
@@ -45,4 +44,21 @@
 
 .user-link {
     color: #0081bd !important;
+}
+
+.map-select {
+    width: 60%;
+}
+
+.map-submit {
+    width: 30%;
+}
+
+.map-form-group {
+    display: inline-block;
+}
+
+.map-form-section {
+    margin: 10px;
+    text-align: center;
 }

@@ -25,4 +25,32 @@ class Part < ApplicationRecord
     self.relating.include?(other_part)
   end
   
+  def family
+    array = []
+    def gather(array, part)
+      part.relatings.each do |child|
+        array << child
+        gather(array, child)
+      end
+    end
+    gather(array, self)
+    return array.sort
+  end
+
+  def family_includes_self
+    (family << self).sort
+  end
+
+  def family_to_options(includes_self=true)
+    array = []
+    if includes_self
+      raw = family_includes_self
+    else
+      raw = family
+    end
+    raw.each do |f|
+      array << [f.id.to_s + ":" + f.title, f.id]
+    end
+    return array
+  end
 end

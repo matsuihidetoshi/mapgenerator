@@ -9,16 +9,19 @@
               <%= link_to part.user.name, user_path(part.user) %> <span class="text-muted">created at:<%= part.created_at %></span>
             </div>
             <div>
+              <p>ID:<%= part.id %></p>
               <p>Title：<%= part.title %></p>
               <p>Content：<%= part.content %></p>
             </div>
             <div>
               <% if current_user == part.user %>
-                <%= link_to "Print", map_former_path(part), class: 'btn btn-primary btn-xs' %>
+                <% if part.relatings.any? %>
+                  <%= link_to "Print", map_former_path(part), class: 'btn btn-primary btn-xs' %>
+                <% end %>
                 <%= link_to "Add", new_part_path(id: part.id), class: 'btn btn-info btn-xs' %>
                 <%= link_to "Edit", edit_part_path(part), class: 'btn btn-success btn-xs' %>
                 <% if current_user.parts.count > 1 %>
-                  <%= link_to "Delete", part, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+                  <%= link_to "Delete", part, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-xs' %>
                 <% end %>
               <% end %>
             </div>

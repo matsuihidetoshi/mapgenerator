@@ -12,8 +12,8 @@ class MapFormer < ApplicationService
           map.graph do
             nodes fontname: 'IPA GOTHIC', charset: 'UTF-8'
             route own.id => child.id
-            node :"#{own.id}", shape:'Mrecord', label:  "{#{own.id} | #{own.title} | #{own.content}}"
-            node :"#{child.id}", shape:'Mrecord', label: "{#{own.id} | #{child.title} | #{child.content}}"
+            node :"#{own.id}", shape:'Mrecord', style: 'filled', fontcolor: 'white', color: "cornflowerblue", label: "{#{own.id} | #{own.title} | #{own.content}}"
+            node :"#{child.id}", shape:'Mrecord', style: 'filled', fontcolor: 'white', color: "cornflowerblue", label: "{#{own.id} | #{child.title} | #{child.content}}"
           end
           mapping(child,map)
         end
@@ -22,8 +22,8 @@ class MapFormer < ApplicationService
         map.graph do
           nodes fontname: 'IPA GOTHIC', charset: 'UTF-8'
           route parent.id => own.id
-          node :"#{parent.id}", shape:'Mrecord', label: "{#{parent.id} | #{parent.title} | #{parent.content}}"
-          node :"#{own.id}", shape:'Mrecord', label: "{#{own.id} | #{own.title} | #{own.content}}"
+          node :"#{parent.id}", shape:'Mrecord', style: 'filled', fontcolor: 'white', color: "cornflowerblue", label: "{#{parent.id} | #{parent.title} | #{parent.content}}"
+          node :"#{own.id}", shape:'Mrecord', style: 'filled', fontcolor: 'white', color: "cornflowerblue", label: "{#{own.id} | #{own.title} | #{own.content}}"
         end
       end
     end
