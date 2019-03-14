@@ -10,7 +10,10 @@
           <p>Email：<%= @user.email %></p>
         </div>
         <div class="user-return">
-          <%= link_to "Back", root_path, class: "btn btn-warning" %>
+          <%= link_to "Edit", edit_user_path(@user), class: "btn btn-success user-button" %>
+        </div>
+        <div class="user-return">
+          <%= link_to "Back", root_path, class: "btn btn-warning user-button" %>
         </div>
         <div class="delete" data-turbolinks="false">
           <%= link_to "Delete", @user, method: :delete, data: { confirm: "If you delete the user, all parts related to the user will be removed. Are you sure?" }, class: 'btn btn-danger btn-xs' %>

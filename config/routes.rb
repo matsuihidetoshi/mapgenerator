@@ -6,13 +6,11 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create, :destroy]
+  resources :users
   
   resources :parts, only: [:create, :destroy, :new, :edit, :update] 
   
   resources :relationships, only:[:create, :destroy]
 
   resources :map_formers, only: [:show]
-  
-  get '/print/:id', to: 'parts#print', as: 'print'
 end
