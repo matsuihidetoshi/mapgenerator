@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(name: 'Map User')
+    @user = User.new(name: 'User' + DateTime.now.to_i.to_s)
   end
 
   def create
