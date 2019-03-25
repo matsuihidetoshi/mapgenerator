@@ -68,3 +68,5 @@ group :production, :staging do
 end
 
 gem 'rails-i18n'
+
+gem  'rack-cors'
