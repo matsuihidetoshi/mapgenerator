@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: hidetoshi0424
+  password: <%= ENV['MYSQL_AUTH'] %>
   host: localhost
 
 development:
