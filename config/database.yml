@@ -51,4 +51,4 @@ production:
   <<: *default
   database: mapgenerator_production
   username: root
-  password: hidetoshi0424
+  password: <%= ENV['MYSQL_AUTH'] %>
