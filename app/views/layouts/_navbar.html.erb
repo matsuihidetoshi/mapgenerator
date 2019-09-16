@@ -14,7 +14,7 @@
         <ul class="nav navbar-nav navbar-right navbar-ul">
           <% if logged_in? %>
             <li><%= link_to 'HOME', root_path %></li>
-            <li><%= link_to 'User', @user %></li>
+            <li><%= link_to 'User', current_user %></li>
             <li><%= link_to 'Logout', logout_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'Login', login_path %></li>
