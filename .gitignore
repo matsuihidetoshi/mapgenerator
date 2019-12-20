@@ -26,3 +26,5 @@ spec/models/mock_ups
 cloudinary.yml
 
 public/
+
+.ebextensions/
