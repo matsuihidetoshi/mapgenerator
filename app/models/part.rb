@@ -1,4 +1,6 @@
 class Part < ApplicationRecord
+  require 'json'
+
   belongs_to :user
   
   validates :user_id, presence: true
@@ -35,6 +37,21 @@ class Part < ApplicationRecord
     end
     gather(array, self)
     return array.sort
+  end
+
+  def family_hash
+    hash = {name: self.title, title: self.content}
+    def gather(part)
+      array = []
+      part.relatings.each do |child|
+        child_hash = {name: child.title, title: child.content}
+        child_hash.store(:children, gather(child)) if child.relatings.any?
+        array << child_hash
+      end
+      return array
+    end
+    hash.store(:children, gather(self))
+    return hash
   end
 
   def family_includes_self

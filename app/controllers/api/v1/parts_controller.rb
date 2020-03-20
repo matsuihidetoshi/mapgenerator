@@ -10,7 +10,7 @@ module Api
 
       def show
         part = Part.find(params[:id])
-        render json: { status: 'SUCCESS', message: 'loaded the part', data: part }
+        render json: { status: 'SUCCESS', message: 'loaded the part', data: part.family_hash }
       end
 
       def create
